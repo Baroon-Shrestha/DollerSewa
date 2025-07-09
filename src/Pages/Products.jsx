@@ -1,5 +1,10 @@
 import React from "react";
+import ProductsMain from "../Components/ProductsComponents/ProductsMain";
 
 export default function Products() {
-  return <div>Products</div>;
+  return (
+    <div>
+      <ProductsMain />
+    </div>
+  );
 }
