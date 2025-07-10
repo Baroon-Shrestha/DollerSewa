@@ -27,7 +27,7 @@ const products = [
 
 export default function Latest() {
   return (
-    <section className="mx-6 py-12 rounded-4xl bg-gradient-to-br from-slate-600/70 via-blue-900/60 to-indigo-950/50 h-[80vh] flex items-center justify-center px-6">
+    <section className="mx-6 py-20 rounded-4xl bg-gradient-to-br from-slate-600/70 via-blue-900/60 to-indigo-950/50 px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Title and subtitle */}
         <div className="flex items-center justify-center gap-3 flex-col mb-10">

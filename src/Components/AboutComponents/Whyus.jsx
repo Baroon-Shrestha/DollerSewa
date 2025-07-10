@@ -37,18 +37,21 @@ export default function Whyus() {
   ];
 
   return (
-    <section className=" container mx-auto py-20">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="container mx-auto py-20">
+      <div className=" text-center">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-          Why Choose <span>DollerSewa?</span>
+          Why Choose{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+            DollerSewa?
+          </span>
         </h2>
-        <p className=" text-lg mb-8 max-w-3xl mx-auto">
+        <p className=" text-lg mb-8 max-w-3xl mx-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
           cupiditate debitis voluptas exercitationem obcaecati beatae cumque
           molestiae fugit, fuga culpa.
         </p>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12 text-left">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12 text-left mx-4">
           {cards.map(({ title, description }, index) => {
             const isSelected = selected === index;
             return (

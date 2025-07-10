@@ -5,19 +5,29 @@ import { Link } from "react-router-dom";
 // Static FAQ data
 const faqs = [
   {
-    question: "What services does Dolleer Sewa provide?",
+    question: "What is Doller Sewa?",
     answer:
-      "We offer secure and fast digital financial services, including online payments, remittance services, bill payments, and local bank transfers.",
+      "Doller Sewa is a digital service platform that helps people in Nepal purchase international services like ChatGPT, Canva Pro, and Netflix easily and affordably.",
   },
   {
-    question: "Is Dolleer Sewa safe to use?",
+    question: "How does the checkout process work?",
     answer:
-      "Absolutely. We use end-to-end encryption and multi-factor authentication to keep your transactions and data secure at all times.",
+      "We use WhatsApp checkout. Once you add services to your cart, you can confirm your order via WhatsApp and complete your purchase through guided steps.",
   },
   {
-    question: "How fast are the transactions?",
+    question: "Is this platform mobile friendly?",
     answer:
-      "Most transactions are completed within seconds. In rare cases, processing time may vary depending on the partner network.",
+      "Yes, Doller Sewa is fully mobile responsive and optimized for a seamless experience across all devices, including smartphones and tablets.",
+  },
+  {
+    question: "What services can I buy through Doller Sewa?",
+    answer:
+      "You can purchase subscriptions like ChatGPT Plus, Canva Pro, Netflix, YouTube Premium, and other digital tools with local support and affordable pricing.",
+  },
+  {
+    question: "Do I need a credit card or international payment method?",
+    answer:
+      "No, you don’t need any international card. We simplify the process and allow you to pay using local payment methods with WhatsApp coordination.",
   },
 ];
 
@@ -70,7 +80,7 @@ export default function FAQSection() {
             <div>
               <Link to="/faq">
                 <div className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500 text-wite font-semibold rounded-full hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                  Have more faq's
+                  Have more Queries? Check More...
                 </div>
               </Link>
             </div>

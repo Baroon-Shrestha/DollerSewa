@@ -4,29 +4,54 @@ import { Link } from "react-router-dom";
 
 const faqs = [
   {
-    question: "What services does Dolleer Sewa provide?",
+    question: "What is Doller Sewa?",
     answer:
-      "We offer secure and fast digital financial services, including online payments, remittance services, bill payments, and local bank transfers.",
+      "Doller Sewa is Nepal's trusted platform for purchasing international digital services like ChatGPT Plus, Netflix, Canva Pro, and more—locally and affordably.",
   },
   {
-    question: "Is Dolleer Sewa safe to use?",
+    question: "How do I buy a service?",
     answer:
-      "Absolutely. We use end-to-end encryption and multi-factor authentication to keep your transactions and data secure at all times.",
+      "Simply add the service to your cart and proceed to checkout. Your order is confirmed via WhatsApp, where our support team guides you through the final steps.",
   },
   {
-    question: "How fast are the transactions?",
+    question: "Do I need a dollar card or international payment method?",
     answer:
-      "Most transactions are completed within seconds. In rare cases, processing time may vary depending on the partner network.",
+      "No, Doller Sewa eliminates the need for dollar cards. We handle the international payment on your behalf and collect local payment directly from you.",
   },
   {
-    question: "How do I contact customer support?",
+    question: "Is WhatsApp checkout secure?",
     answer:
-      "You can contact our team through live chat, our Contact Us page, email support, or our toll-free number. We're here to help 24/7.",
+      "Yes. All communication is encrypted via WhatsApp, and our team ensures your transaction is handled safely and transparently.",
   },
   {
-    question: "Do you have a mobile application?",
+    question: "What services can I buy?",
     answer:
-      "Yes! Dolleer Sewa is available on both Android and iOS platforms. Download our app for faster and more convenient service.",
+      "You can purchase premium subscriptions like ChatGPT Plus, Netflix Premium, YouTube Premium, Canva Pro, Grammarly, and other digital tools.",
+  },
+  {
+    question: "How long does it take to activate a service?",
+    answer:
+      "Most services are activated within 10 to 30 minutes after confirmation and payment. For certain products, it may take up to 24 hours.",
+  },
+  {
+    question: "Can I track my order?",
+    answer:
+      "Yes, after your order is placed, you'll receive real-time updates through WhatsApp regarding payment confirmation and service activation.",
+  },
+  {
+    question: "Is Doller Sewa mobile friendly?",
+    answer:
+      "Absolutely! Our website is fully responsive and optimized for mobile devices, making it easy to browse, order, and chat on the go.",
+  },
+  {
+    question: "Is there customer support?",
+    answer:
+      "Yes. Our support team is available 24/7 via WhatsApp and our Contact page to assist you with orders, inquiries, and technical help.",
+  },
+  {
+    question: "Why choose Doller Sewa over others?",
+    answer:
+      "We offer unmatched convenience, local pricing, personalized WhatsApp support, and a user-friendly experience designed specifically for Nepali users.",
   },
 ];
 

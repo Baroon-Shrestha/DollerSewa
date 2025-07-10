@@ -71,8 +71,7 @@ export default function WhoAreWe() {
               connect globally through access to digital services,
               subscriptions, and tools that were previously out of reach. With a
               dedicated support team and streamlined payment methods, Doller
-              Sewa is your trusted partner for accessing the international
-              marketplace.
+              Sewa is your trusted partner for accessing the marketplace.
             </p>
           </div>
         </div>
