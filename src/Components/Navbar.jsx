@@ -4,7 +4,6 @@ import AuthModal from "./AuthComponents/AuthModal";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const [modalOpen, setModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState("login");
 
@@ -14,68 +13,62 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900 text-blue-400">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav
+      className="text-white shadow-md"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, black 0%, #1c1f3a 30%, #1c1f3a 70%, black 100%)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/">
-          <li>
-            <div className="text-xl font-bold text-white">DollerSewa</div>
-          </li>
+        <Link to="/" className="text-2xl font-bold text-white">
+          DollerSewa
         </Link>
-        {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-8 text-sm font-medium">
+
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex items-center gap-8 px-16 py-2 bg-white/10 backdrop-blur-md rounded-full text-sm font-medium shadow-inner border border-white/10">
           <Link to="/">
-            <li className="hover:text-white transition-colors cursor-pointer">
+            <div className="hover:text-blue-500 text-blue-100 transition-colors cursor-pointer">
               Home
-            </li>
+            </div>
           </Link>
           <Link to="/about">
-            <li className="hover:text-white transition-colors cursor-pointer">
+            <div className="hover:text-blue-500 text-blue-100 transition-colors cursor-pointer">
               About Us
-            </li>
+            </div>
           </Link>
           <Link to="/products">
-            <li className="hover:text-white transition-colors cursor-pointer">
-              Shop
-            </li>
+            <div className="hover:text-blue-500 text-blue-100 transition-colors cursor-pointer">
+              Services
+            </div>
           </Link>
           <Link to="/contact">
-            <li className="hover:text-white transition-colors cursor-pointer">
+            <div className="hover:text-blue-500 text-blue-100 transition-colors cursor-pointer">
               Contact
-            </li>
+            </div>
+          </Link>
+          <Link to="/faq" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-blue-500 text-blue-100 transition-colors">
+              FAQ's
+            </div>
           </Link>
         </ul>
 
-        {/* Login Button */}
+        {/* CTA Button */}
         <div className="hidden md:block">
           <button
-            onClick={() => {
-              openModal("login");
-            }}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all"
+            onClick={() => openModal("login")}
+            className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-7 py-2 text-white rounded-full shadow-lg hover:brightness-110 hover:shadow-xl transition-all duration-300 font-bold"
           >
             Login
           </button>
         </div>
-        {/* <div className="space-x-3 hidden md:block">
-          <button
-            onClick={() => openModal("login")}
-            className="text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => openModal("register")}
-            className="text-blue-600 border border-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition"
-          >
-            Register
-          </button>
-        </div> */}
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-blue-400 focus:outline-none"
+          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
         >
           <svg
             className="w-6 h-6"
@@ -102,30 +95,46 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Nav Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-gray-800 px-4 pb-4">
-          <ul className="space-y-4 text-sm font-medium">
-            <li className="hover:text-white transition-colors cursor-pointer">
+        <div className="md:hidden bg-black/95 backdrop-blur-md text-white px-4 py-6 space-y-4 rounded-b-xl border-t border-white/10 shadow-lg">
+          <Link to="/" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-emerald-400 transition-colors py-2 px-2 rounded-lg hover:bg-white/5">
               Home
-            </li>
-            <li className="hover:text-white transition-colors cursor-pointer">
+            </div>
+          </Link>
+          <Link to="/about" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-emerald-400 transition-colors py-2 px-2 rounded-lg hover:bg-white/5">
+              About Us
+            </div>
+          </Link>
+          <Link to="/products" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-emerald-400 transition-colors py-2 px-2 rounded-lg hover:bg-white/5">
               Services
-            </li>
-            <li className="hover:text-white transition-colors cursor-pointer">
-              About
-            </li>
-            <li className="hover:text-white transition-colors cursor-pointer">
+            </div>
+          </Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-emerald-400 transition-colors py-2 px-2 rounded-lg hover:bg-white/5">
               Contact
-            </li>
-            <li>
-              <button className="bg-blue-600 text-white w-full px-4 py-2 rounded hover:bg-blue-700 transition-all">
-                Login
-              </button>
-            </li>
-          </ul>
+            </div>
+          </Link>
+          <Link to="/faq" onClick={() => setIsOpen(false)}>
+            <div className="hover:text-emerald-400 transition-colors py-2 px-2 rounded-lg hover:bg-white/5">
+              FAQ's
+            </div>
+          </Link>
+          <button
+            onClick={() => {
+              openModal("login");
+              setIsOpen(false);
+            }}
+            className="w-full mt-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-3 rounded-full shadow-lg hover:brightness-110 hover:shadow-xl transition-all duration-300 border border-emerald-300"
+          >
+            Login
+          </button>
         </div>
       )}
+
       <AuthModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

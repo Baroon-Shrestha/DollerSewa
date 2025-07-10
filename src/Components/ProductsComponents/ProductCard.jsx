@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Helper/Card";
 import QuickViewModal from "../Helper/QuickViewModal";
+import { Link } from "react-router-dom";
+import CurrencySwitcher from "../Helper/CurrencySwitcher";
+import toast from "react-hot-toast";
 
 const productDetails = [
   {
@@ -10,6 +13,7 @@ const productDetails = [
     shortDesc: "AI subscription with GPT-4 access and enhanced performance.",
     subscriptionType: "Monthly",
     MaxPersons: 1,
+    currency: "USD",
     longDesc:
       "ChatGPT Plus gives you access to GPT-4o with 80 messages every 3 hours, faster response times, and priority access even during peak usage. Perfect for professionals, students, and businesses requiring advanced AI capabilities.",
     price: 20,
@@ -21,6 +25,7 @@ const productDetails = [
     shortDesc: "Professional design tools with premium assets and AI features.",
     subscriptionType: "Monthly",
     MaxPersons: 1,
+    currency: "USD",
     longDesc:
       "Canva Pro offers unlimited premium templates, 100M+ stock photos, videos, audio tracks, background remover, brand kit, and Magic Resize. Perfect for content creators and small businesses.",
     price: 15,
@@ -32,6 +37,7 @@ const productDetails = [
     shortDesc: "Stream movies and TV shows in HD quality.",
     subscriptionType: "Monthly",
     MaxPersons: 2,
+    currency: "USD",
     longDesc:
       "Netflix Standard plan allows streaming on 2 devices simultaneously in HD quality. Access to Netflix's entire library of movies, series, and documentaries. Extra members can be added for $8.99/month.",
     price: 15.49,
@@ -43,6 +49,7 @@ const productDetails = [
     shortDesc: "Ad-free music streaming with offline downloads.",
     subscriptionType: "Monthly",
     MaxPersons: 1,
+    currency: "USD",
     longDesc:
       "Spotify Premium Individual offers ad-free music streaming, unlimited skips, offline downloads, and high-quality audio. Access to 100+ million songs and exclusive podcasts.",
     price: 11.99,
@@ -54,6 +61,7 @@ const productDetails = [
     shortDesc: "Fast shipping, Prime Video, and Prime Music included.",
     subscriptionType: "Monthly",
     MaxPersons: 1,
+    currency: "USD",
     longDesc:
       "Amazon Prime membership includes free same-day/next-day delivery, Prime Video streaming, Prime Music, Prime Reading, and exclusive deals. Note: Prime Video now has ads unless you pay extra $2.99/month.",
     price: 18.98,
@@ -65,6 +73,7 @@ const productDetails = [
     shortDesc: "Ad-free YouTube, background play, and YouTube Music.",
     subscriptionType: "Monthly",
     MaxPersons: 1,
+    currency: "USD",
     longDesc:
       "YouTube Premium removes ads from all videos, allows background play and offline downloads, includes YouTube Music Premium, and access to YouTube Originals. Family plan available for up to 6 members.",
     price: 13.99,
@@ -76,6 +85,7 @@ const productDetails = [
     shortDesc: "Ultra HD streaming on 4 devices simultaneously.",
     subscriptionType: "Monthly",
     MaxPersons: 4,
+    currency: "USD",
     longDesc:
       "Netflix Premium plan offers Ultra HD (4K) streaming on up to 4 devices simultaneously. Includes all Netflix content, spatial audio support, and the ability to download on 6 devices.",
     price: 24.99,
@@ -87,36 +97,28 @@ const productDetails = [
     shortDesc: "Premium for 6 family members with individual accounts.",
     subscriptionType: "Monthly",
     MaxPersons: 6,
+    currency: "USD",
     longDesc:
       "Spotify Family plan provides Premium features for up to 6 family members living at the same address. Each member gets their own account with personalized playlists and recommendations.",
     price: 19.99,
   },
-  {
-    id: 9,
-    title: "Canva Teams",
-    image: "/uploads/canva.webp",
-    shortDesc: "Collaborative design platform for teams (min 3 users).",
-    subscriptionType: "Monthly",
-    MaxPersons: "3+ users",
-    longDesc:
-      "Canva Teams includes all Pro features plus team collaboration tools, brand controls, content planner, and approval workflows. Perfect for marketing teams and agencies. Minimum 3 users required.",
-    price: 10, // per user per month
-  },
-  {
-    id: 10,
-    title: "YouTube Family",
-    image: "/uploads/youtube.png",
-    shortDesc: "Premium benefits for up to 6 family members.",
-    subscriptionType: "Monthly",
-    MaxPersons: 6,
-    longDesc:
-      "YouTube Premium Family plan provides ad-free YouTube and YouTube Music for up to 6 family members aged 13+. Each member gets their own account with personalized recommendations and playlists.",
-    price: 22.99,
-  },
+  // {
+  //   id: 9,
+  //   title: "Canva Teams",
+  //   image: "/uploads/canva.webp",
+  //   shortDesc: "Collaborative design platform for teams (min 3 users).",
+  //   subscriptionType: "Monthly",
+  //   MaxPersons: "3+ users",
+  //   currency: "USD",
+  //   longDesc:
+  //     "Canva Teams includes all Pro features plus team collaboration tools, brand controls, content planner, and approval workflows. Perfect for marketing teams and agencies. Minimum 3 users required.",
+  //   price: 10,
+  // },
 ];
 
 export default function ProductCard() {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [currency, setCurrency] = useState("USD");
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem("cart");
     return saved ? JSON.parse(saved) : [];
@@ -127,37 +129,50 @@ export default function ProductCard() {
   }, [cart]);
 
   // Confirm before refresh
-  useEffect(() => {
-    const beforeUnloadHandler = (e) => {
-      if (cart.length > 0) {
-        e.preventDefault();
-        e.returnValue =
-          "You have items in your cart. Refreshing will clear them. Continue?";
-      }
-    };
-    window.addEventListener("beforeunload", beforeUnloadHandler);
-    return () =>
-      window.removeEventListener("beforeunload", beforeUnloadHandler);
-  }, [cart]);
+  // useEffect(() => {
+  //   const beforeUnloadHandler = (e) => {
+  //     if (cart.length > 0) {
+  //       e.preventDefault();
+  //       e.returnValue =
+  //         "You have items in your cart. Refreshing will clear them. Continue?";
+  //     }
+  //   };
+  //   window.addEventListener("beforeunload", beforeUnloadHandler);
+  //   return () =>
+  //     window.removeEventListener("beforeunload", beforeUnloadHandler);
+  // }, [cart]);
 
   const handleAddToCart = (item) => {
     setCart((prev) => [...prev, item]);
-    alert(`${item.title} added to your cart.`);
+    toast.success(`${item.title} added to your cart.`);
   };
 
   return (
     <>
-      <div className="bg-gray-900 ">
+      <div className="bg-gradient-to-r from-[#1a1f34] via-[#0a0c17] to-[#1a1f34] text-blue-400">
         <div className="container mx-auto px-4 py-10">
           <h2 className="text-3xl font-bold text-white mb-6 text-center">
             Featured Subscriptions
           </h2>
+          <div className="flex items-center gap-6 py-8">
+            <Link to="/products/cart">
+              <div className="px-6 py-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white rounded-2xl">
+                Cart({cart.length})
+              </div>
+            </Link>
+            <div>
+              <CurrencySwitcher
+                onChange={(newCurrency) => setCurrency(newCurrency)}
+              />
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {productDetails.map((item) => (
               <Card
                 key={item.id}
                 title={item.title}
                 description={item.shortDesc}
+                currency={currency}
                 image={item.image}
                 subscriptionType={item.subscriptionType}
                 maxPersons={item.MaxPersons}
@@ -172,6 +187,8 @@ export default function ProductCard() {
             <QuickViewModal
               product={selectedProduct}
               onClose={() => setSelectedProduct(null)}
+              onAddToCart={handleAddToCart}
+              currency={currency}
             />
           )}
         </div>
