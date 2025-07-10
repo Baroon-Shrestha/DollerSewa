@@ -9,7 +9,7 @@ export default function FAQHelper({ id, question, answer, isOpen, onClick }) {
           onClick={onClick}
           className="w-full flex justify-between items-center text-left p-6 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-2xl group"
         >
-          <span className="text-lg md:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-300 pr-4">
+          <span className="text-lg md:text-xl font-semibold text-blue-400 group-hover:text-blue-300 transition-colors duration-300 pr-4">
             {question}
           </span>
 
